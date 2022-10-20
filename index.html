@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<title>Main Page</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Some Description" />
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220727052040">
+	<link rel="shortcut icon" href="favicon.ico">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+
+<body>
+
+	<div class="wrapper">
+		<header class="header">
+			<!-- Block mit Hintergrund und Logo, Beginn -->
+			<div class="header__body">
+				<div class="header__container">
+					<div class="header__content content-header">
+						<img src="img/Framex-logo.png" alt="Framex Logo" class="content-header__logo">
+						<a href="https://www.ebay.de/str/frmex?mkcid=16&mkevt=1&mkrid=707-127634-2357-0&ssspo=kxhsjqrmrmi&sssrc=3418065&ssuid=kxhsjqrmrmi&widget_ver=artemis&media=COPY" class="content-header__link">
+							<img src="img/heart.png" alt="speichern" class="content-header__heart">
+							<div class="content-header__text">Speichern</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- Block mit Hintergrund und Logo, Ende -->
+
+			<!-- Block mit Seitennavigation, Beginn -->
+			<nav class="header__navigation navigation-header">
+				<div class="navigation-header__container">
+					<ul class="navigation-header__list">
+						<li id="withSubmenu" class="navigation-header__item">
+							<div onclick="submenu()" class="navigation-header__link">
+								<span class="burger">
+									<span class="line-1"></span>
+									<span class="line-2"></span>
+									<span class="line-3"></span>
+								</span>
+								<span>Kategorien</span>
+							</div>
+							<ul class="submenu">
+								<li><a href="">Kellerfenster 4-Kammer</a></li>
+							</ul>
+						</li>
+						<li class="navigation-header__item"><a href="https://www.ebay.de/str/frmex?mkcid=16&mkevt=1&mkrid=707-127634-2357-0&ssspo=kxhsjqrmrmi&sssrc=3418065&ssuid=kxhsjqrmrmi&widget_ver=artemis&media=COPY" class="navigation-header__link">Zum Shop</a></li>
+						<li class="navigation-header__item"><a href="https://www.ebay.de/str/frmex?mkcid=16&mkevt=1&mkrid=707-127634-2357-0&ssspo=kxhsjqrmrmi&sssrc=3418065&ssuid=kxhsjqrmrmi&widget_ver=artemis&media=COPY#tab2" class="navigation-header__link">Bewertungen</a></li>
+						<li class="navigation-header__item"><a href="https://www.ebay.de/contact/sendmsg?message_type_id=14&recipient=framex.shop" class="navigation-header__link">Kontakt</a></li>
+					</ul>
+				</div>
+			</nav>
+			<!-- Block mit Seitennavigation, Ende -->
+
+			<script>
+				function submenu() {
+
+					const elem = document.getElementById('withSubmenu');
+					if (elem) {
+						elem.classList.toggle("navigation-header__item_active");
+					}
+				}
+			</script>
+
+
+
+		</header>
+		<main class="page">
+
+			<!-- MINI-BESCHREIBUNG, Beginn -->
+			<section class="mini-beschreibung">
+				<div class="mini-beschreibung__container">
+					<div class="header-line">
+						<h2 class="header-line__title">Mini-Beschreibung</h2>
+					</div>
+
+					<div class="mini-beschreibung__content">
+						<div class="mini-beschreibung__slider">
+							<div class="mini-beschreibung__slider-wrapper">
+								<div id="imageSlideShow" style="position:relative; margin:auto;">
+									<img src="img/Minibeschreibung/windows-1.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-2.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-3.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-4.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-5.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-6.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-7.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-8.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-1.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-1.jpg" alt="window">
+									<img src="img/Minibeschreibung/windows-1.jpg" alt="window">
+								</div>
+							</div>
+
+						</div>
+
+						<script>
+							// слайдер в секции MINI-BESCHREIBUNG
+
+							function SlideSetup(rep) {
+								var el = document.getElementById('imageSlideShow');
+								ims = el.getElementsByTagName('IMG');
+								if (ims[0].offsetWidth < 50 && rep < 10) {
+									rep++;
+									setTimeout('SlideSetup(' + rep + ')', 200);
+									return
+								}
+								var imgList = [];
+								var SssTimeout;
+								for (var i = 0; i < ims.length; i++) {
+									imgList.push(ims[i].src);
+								}
+								var w = ims[0].offsetWidth;
+
+								var leftArrow = '';
+								var rightArrow = '';
+								if (ims.length > 4) {
+									var leftArrow = '<div class="mini-beschreibung__arrow mini-beschreibung__arrow_left" onclick="moveImagesLeft()"></div>';
+									var rightArrow = '<div class="mini-beschreibung__arrow mini-beschreibung__arrow_right" onclick="moveImagesRight()"></div>';
+								}
+
+								var gal = '' + '<div class="mini-beschreibung__image-wrapper"><img src="' + imgList[0] + '" id="bigpic" ' + 'class="mini-beschreibung__image"></div>' + '<div id="sliderArrows" class="mini-beschreibung__arrows">' + leftArrow;
+								var row = Math.ceil(ims.length / 8);
+								for (var i = 0; i < imgList.length; i++) {
+									var br = '';
+									if ((i % row + 8) == row) {
+										br = ''
+									}
+									gal += '<img class id="SssThm' + i + '" src="' + imgList[i] + '" ' + 'onclick="doSlideShow(' + i + ')">' + br
+								}
+								gal += rightArrow + '</div>';
+								el.innerHTML = gal;
+								doSlideShow = (function(k) {
+									clearTimeout(SssTimeout);
+									var el = document.getElementById('bigpic');
+									el.src = imgList[k];
+									for (var i = 0; i < imgList.length; i++) {
+										document.getElementById('SssThm' + i).style.borderColor = 'white';
+									}
+									k = (k + 1) % imgList.length;
+									SssTimeout = setTimeout("doSlideShow(" + k + ")", 800000);
+								});
+								doSlideShow(0);
+							}
+							SlideSetup(0);
+
+
+							var elBlock = document.getElementById('imageSlideShow');
+							ims = elBlock.getElementsByTagName('IMG');
+
+							var countImages = ims.length;
+
+							if (countImages > 4 && countImages <= 8) {
+								elBlock.classList.add("items-4-8");
+							}
+							if (countImages > 8 && countImages <= 12) {
+								elBlock.classList.add("items-8-12");
+							}
+							if (countImages > 12 && countImages <= 16) {
+								elBlock.classList.add("items-12-16");
+							}
+
+							// проверка на наличие класса для того, чтобы делать перелистывания
+
+							function isClass1() {
+								const className = 'move-to-left-1';
+								const isClass = document.getElementsByClassName(className);
+
+								if (isClass) {
+									if (isClass.length > 0) {
+										return "1";
+									} else {
+										return "0";
+									}
+								}
+							}
+
+							function isClass2() {
+								const className = 'move-to-left-2';
+								const isClass = document.getElementsByClassName(className);
+
+								if (isClass) {
+									if (isClass.length > 0) {
+										return "1";
+									} else {
+										return "0";
+									}
+								}
+							}
+
+
+
+							moveImagesRight = (function() {
+								var elBlock = document.getElementById('imageSlideShow');
+								var widthBlock = elBlock.offsetWidth;
+								ims = elBlock.getElementsByTagName('IMG');
+								var elArrows = document.getElementById('sliderArrows');
+
+								var countImages = ims.length - 1;
+
+								if (countImages > 8) {
+									var isClass = isClass1();
+									if (isClass == 1) {
+										elArrows.classList.add("move-to-left-2");
+									}
+								}
+								elArrows.classList.add("move-to-left-1");
+								// if (countImages > 4 && countImages < 9) {
+								// 	elArrows.classList.add("move-to-left-1");
+								// }
+
+							});
+
+							moveImagesLeft = (function() {
+								var elBlock = document.getElementById('imageSlideShow');
+								var widthBlock = elBlock.offsetWidth;
+								ims = elBlock.getElementsByTagName('IMG');
+								var elArrows = document.getElementById('sliderArrows');
+
+								var countImages = ims.length - 1;
+								if (countImages > 8) {
+									var isClass = isClass2();
+									if (isClass == 1) {
+										elArrows.classList.remove("move-to-left-2");
+										console.log('tut');
+									} else {
+										elArrows.classList.remove("move-to-left-1");
+									}
+								} else {
+									elArrows.classList.remove("move-to-left-1");
+								}
+
+								// если поднадобится пролистывать ещё больше картинок, то использовать по аналогии class css .move-to-left-3
+							});
+						</script>
+
+						<div class="mini-beschreibung__description">
+							<h3 class="mini-beschreibung__title">Kunststofffenster Kellerfenster Fenster Weiß 2 fach Verglasung
+								Dreh Kipp DIN Rechts Links</h3>
+							<div class="mini-beschreibung__text">
+								<p>Alle unsere Kunststofffenster sind aus ökologischem Kunststoff hergestellt. In der Mitte des
+									Profils befindet sich ein spezieller Stahlkern, der die Steifigkeit der Konstruktion erhöht.
+									Für alle Produkte liegt eine AFT-Zertifizierung vor, die die Wasserdichtigkeit,
+									Energieeffizienz, Wärmeübertragung und Schalldämmung bestätigt. Die hochwertigen
+									Drehkippfenster von Framex können in der ganzen Wohnung, im Bad, im Keller und in der Garage
+									eingesetzt werden. Normalerweise stellen wir weiße Fenster mit Doppelverglasung her, aber Sie
+									können jede Konfiguration und Größe des Fensters wählen. </p>
+							</div>
+							<div class="mini-beschreibung__appeal appeal">
+								<div class="appeal__text">
+									<p>Benötigen Sie eine Sonderanfertigung? Kontaktiere uns!</p>
+								</div>
+								<a href="https://www.ebay.de/str/frmex?mkcid=16&mkevt=1&mkrid=707-127634-2357-0&ssspo=kxhsjqrmrmi&sssrc=3418065&ssuid=kxhsjqrmrmi&widget_ver=artemis&media=COPY" class="appeal__button">Fragen stellen</a>
+							</div>
+
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</section>
+			<!-- MINI-BESCHREIBUNG, Ende -->
+
+
+			<!-- PRODUKTBESCHREIBUNG, Beginn -->
+			<section class="productbeschreibung">
+				<div class="productbeschreibung__container">
+
+					<div class="header-line">
+						<h2 class="header-line__title">PRODUKTBESCHREIBUNG</h2>
+					</div>
+
+					<div class="productbeschreibung__top">
+						<div class="productbeschreibung__description">
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Profil</div>
+								<div class="line-content__description">4-Kammer</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Einbautiefe</div>
+								<div class="line-content__description">58mm</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Isolierglasbreite</div>
+								<div class="line-content__description">32mm</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Bester Wärmeleitfähigkeitswert der Verglasung</div>
+								<div class="line-content__description">Ug – 2 Fach 1,1 W/(m²/K)</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Dichtungssystem</div>
+								<div class="line-content__description">2 umlaufende, hochwertige Anschlagdichtungen in grau
+								</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Glasabstandhalter</div>
+								<div class="line-content__description">Aluminium</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Produktart</div>
+								<div class="line-content__description">Kellerfenster / Kunststofffenster</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Isolierglasbreite</div>
+								<div class="line-content__description">2-Fach 32 mm (4/24/4)mm</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Sicherheitsverglasung</div>
+								<div class="line-content__description">-</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Glasabstandhalter</div>
+								<div class="line-content__description">Aluminium\Plastik</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Zahl der Kammern im Flügel</div>
+								<div class="line-content__description">4</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Artikelzustand</div>
+								<div class="line-content__description">Neuer, unbenutzter und unbeschädigter Artikel in nicht
+									geöffneter Originalverpackung</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Inklusive</div>
+								<div class="line-content__description">Fenstergriff, Wasserschlitzkappen,
+									Fensterbankanschlussprofil</div>
+							</div>
+							<div class="productbeschreibung__line line-content">
+								<div class="line-content__title">Einsatzgebiete</div>
+								<div class="line-content__description">Edieses Kunstoff Fenster kann als Kellerfenster,
+									Gartenhausfenster, Garagen Fenster, kleines Fenster für Wohnraum oder als Fenster für ein
+									Zimmer verwendet werden</div>
+							</div>
+
+						</div>
+						<div class="productbeschreibung__image">
+							<img src="img/Productbeschreibung/k-58-profile_1.jpg" alt="k-58-profile">
+						</div>
+					</div>
+
+					<div class="productbeschreibung__bottom">
+						<div class="productbeschreibung__image productbeschreibung__image_second">
+							<img src="img/Productbeschreibung/k-58-profile-2.jpg" alt="k-58-profile">
+						</div>
+						<div class="productbeschreibung__description productbeschreibung__description_second">
+							<ol>
+								<li><strong>Verglasung:</strong> Nach Kundenwünschen ist 2-fach oder 3-fach-Verglasung möglich
+								</li>
+								<li><strong>Glasdichtung:</strong> TPE-Dichtung schützt vor Witterungseinfluss</li>
+								<li><strong>Flügeloptik:</strong> Abgerundeter Flügel</li>
+								<li><strong>Glasleiste:</strong> Gewährt eine präzise Positionierung des Isolierglases im
+									Fenster</li>
+								<li><strong>Dichtungsebenen:</strong> 2-fach-Dichtungssystem verleiht eine gute Dichtheit des
+									Fensters</li>
+								<li>
+									<strong>Stahlverstärkung:</strong> Je größer ein Fenster ist, desto stärkere Stahlarmierung
+									verwendet wird,
+									bis zu max. 3mm. Dank einem Stahlverstärkungsprofil wird hohe Fenstersteifheit erreicht
+								</li>
+								<li>
+									<strong>Profilkammern:</strong> Zum Erreichen der besten Wärmedichtigkeitswerte wird das
+									Profil auf 4
+									Kammern
+									geteilt.
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- PRODUKTBESCHREIBUNG, Ende -->
+
+
+			<!-- VERGLASUNG, Beginn -->
+			<section class="verglasung">
+				<div class="verglasung__container">
+
+					<div class="header-line">
+						<h2 class="header-line__title">VERGLASUNG</h2>
+					</div>
+
+					<div class="verglasung__content">
+						<div class="verglasung__description">
+							<div class="verglasung__item">
+								<h3 class="verglasung__title">2-FACH VERGLASUNG</h3>
+								<p><strong>Verglasung:</strong> 2-fach Wärmeverglasung 32 mm (4/24/4)</p>
+								<p><strong>Scheibenzwischenraum:</strong> Edelgas Argon</p>
+								<p><strong>Wärmekoeffizientswerte:</strong></p>
+								<p>Ug = 1,1 W/m²K</p>
+								<p>Uf = 1,3 W/m²K</p>
+								<p>Uw= 1,4 W/m²K</p>
+							</div>
+						</div>
+						<div class="verglasung__image">
+							<img src="img/Verglasung/2fach-verglasung.jpg" alt="2fach-verglasung">
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<!-- VERGLASUNG, Ende -->
+
+
+
+
+
+
+			<!-- Block mit TABS, Beginn -->
+			<nav class="tabs">
+				<div class="tabs__container" id="scrollTarget">
+					<ul class="tabs__list tabs__list_top">
+						<li class="tabs__item tab1 tabs__item_active pressed-button" onclick="changeClass('tab1')">Ausrüstung</li>
+						<li class="tabs__item tab2" onclick="changeClass('tab2')">Zeichnung </li>
+						<li class="tabs__item tab3" onclick="changeClass('tab3')">Ornamentgläser</li>
+						<li class="tabs__item tab4" onclick="changeClass('tab4')">Individuelle Bestellung</li>
+						<li class="tabs__item tab5" onclick="changeClass('tab5')">Retouren</li>
+						<li class="tabs__item tab6" onclick="changeClass('tab6')">Dekorfarben</li>
+					</ul>
+				</div>
+			</nav>
+
+			<!-- Tab content Ausrüstung (hide/show), start -->
+			<div id="tab1" class="tab-active">
+				<!-- UNSERE VORTEILE, Beginn -->
+				<div class="unsere-vorteile">
+					<div class="unsere-vorteile__container">
+
+						<div class="header-line">
+							<h2 class="header-line__title">UNSERE VORTEILE</h2>
+						</div>
+
+						<div class="unsere-vorteile__wrapper">
+							<div class="unsere-vorteile__content">
+								<div class="unsere-vorteile__image">
+									<img src="img/Vorteile/window.jpg" alt="window">
+								</div>
+								<div class="unsere-vorteile__description">
+									<p>Jedes Fenster wird ab Werk komplett mit hochwertigem und ergonomischem Griff,
+										Vollstahl-Stift, Kunststoffstecker, Wasserabweisende Mützen, Scharnieren und
+										Fensterbankanschlussprofil.</p>
+								</div>
+							</div>
+							<div class="unsere-vorteile__content">
+								<div class="unsere-vorteile__image">
+									<img src="img/Vorteile/FBA-Leiste.jpg" alt="FBA Leiste">
+								</div>
+								<div class="unsere-vorteile__description">
+									<p>Fensterbank-Anschlussprofil (FBA) - inklusive zur einfachen Montage der Fensterbank innen
+										und außen. Wird mit jedem Fenster geliefert. Wenn Sie kein Profil benötigen, um sich mit
+										der Fensterbank zu verbinden, können Sie es entfernen: Klicken Sie im Profilfenster auf
+										aus.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" style="opacity: 0;">
+								<div class="left-tab"></div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" onclick="changeClass('tab2')">
+								<div class="right-tab">ZEICHNUNG</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- UNSERE VORTEILE, Ende -->
+			</div>
+			<!-- Tab content Ausrüstung (hide/show), end -->
+
+
+
+			<!-- Tab content (hide/show), start -->
+			<div id="tab2">
+				<!-- ZEICHNUNG, Beginn -->
+				<div class="zeichnung">
+					<div class="zeichnung__container">
+
+						<div class="header-line">
+							<h2 class="header-line__title">ZEICHNUNG</h2>
+						</div>
+
+						<p class="zeichnung__text zeichnung__text_center">Für Bequemlichkeit und Komfort - die eingebaute
+							Funktion der Drehung und Neigung eines Fensters</p>
+
+						<div class="zeichnung__images">
+							<div class="zeichnung__image">
+								<img src="img/Zeichnung/WINDOW-1.png" alt="Fenster Griff rechts">
+								<div class="zeichnung__title">
+									<p>Dreh - Kipp Links
+										<br>(Griff rechts)
+									</p>
+								</div>
+							</div>
+							<div class="zeichnung__image">
+								<img src="img/Zeichnung/WINDOW-2.png" alt="Fenster Griff links">
+								<div class="zeichnung__title">
+									<p>Dreh - Kipp Links
+										<br>(Griff links)
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="zeichnung__images">
+							<div class="zeichnung__image">
+								<img src="img/Zeichnung/WINDOW-3.png" alt="Fenster">
+								<img class="zeichnung__image_mini" src="img/Zeichnung/HARDWARE-1.png" alt="Fenster">
+								<div class="zeichnung__title">
+									Geschlossen
+								</div>
+							</div>
+							<div class="zeichnung__image">
+								<img src="img/Zeichnung/WINDOW-4.png" alt="Fenster">
+								<img class="zeichnung__image_mini" src="img/Zeichnung/HARDWARE-2.png" alt="Fenster">
+								<div class="zeichnung__title">
+									Gekippt
+								</div>
+							</div>
+							<div class="zeichnung__image">
+								<img src="img/Zeichnung/WINDOW-5.png" alt="Fenster">
+								<img class="zeichnung__image_mini" src="img/Zeichnung/HARDWARE-3.png" alt="Fenster">
+								<div class="zeichnung__title">
+									Geöffnet
+								</div>
+							</div>
+						</div>
+
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" onclick="changeClass('tab1')">
+								<div class="left-tab">Ausrüstung</div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" onclick="changeClass('tab3')">
+								<div class="right-tab">ORNAMENTGLÄSER</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- ZEICHNUNG, Ende -->
+			</div>
+			<!-- Tab content (hide/show), end -->
+
+
+
+			<!-- Tab content (hide/show), start -->
+			<div id="tab3">
+				<!-- ORNAMENTGLÄSER, Beginn -->
+				<div class="ornament">
+					<div class="ornament__container">
+
+						<div class="header-line">
+							<h2 class="header-line__title">ORNAMENTGLÄSER</h2>
+						</div>
+
+						<div class="ornament__description">
+							<p>Wir empfehlen unsere speziellen Isolierglaseinheiten mit verbesserten Energiespareigenschaften -
+								aus verschiedenen emissionsarmen Glastypen (energiesparend und multifunktional), unter
+								Verwendung von Edelgas und einem Polymer-Abstandhalterahmen. Für einen wirkungsvolleren Schutz
+								bieten wir stoßfestes Glas aus Folie mit einer Dicke von 70 bis 200 Mikron an, das einem
+								Aufprall von bis zu 25 kg standhält.
+							</p>
+						</div>
+
+						<div class="ornament__items">
+							<div class="ornament__item item-ornament">
+								<img src="img/Ornamentglaeser/Delta-Weiss.jpg" alt="Delta Weiß" class="item-ornament__image">
+								<div class="item-ornament__title">Delta Weiß</div>
+							</div>
+							<div class="ornament__item item-ornament">
+								<img src="img/Ornamentglaeser/Diamant.jpg" alt="Diamant" class="item-ornament__image">
+								<div class="item-ornament__title">Diamant</div>
+							</div>
+							<div class="ornament__item item-ornament">
+								<img src="img/Ornamentglaeser/Krizet.jpg" alt="Krizet" class="item-ornament__image">
+								<div class="item-ornament__title">Krizet</div>
+							</div>
+							<div class="ornament__item item-ornament">
+								<img src="img/Ornamentglaeser/Punto.jpg" alt="Punto" class="item-ornament__image">
+								<div class="item-ornament__title">Punto</div>
+							</div>
+							<div class="ornament__item item-ornament">
+								<img src="img/Ornamentglaeser/Satinato.jpg" alt="Satinato" class="item-ornament__image">
+								<div class="item-ornament__title">Satinato</div>
+							</div>
+						</div>
+
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" onclick="changeClass('tab2')">
+								<div class="left-tab">ZEICHNUNG</div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" onclick="changeClass('tab4')">
+								<div class="right-tab">INDIVIDUELLE BESTELLUNG</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- ORNAMENTGLÄSER, Ende -->
+			</div>
+			<!-- Tab content (hide/show), end -->
+
+
+
+			<!-- Tab content (hide/show), start -->
+			<div id="tab4">
+				<!-- INDIVIDUELLE BESTELLUNG (GRAUER BLOCK), Beginn -->
+				<div class="individuelle-bestellung">
+					<div class="individuelle-bestellung__container">
+						<div class="individuelle-bestellung__content">
+
+							<div class="individuelle-bestellung__block">
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-1.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Verschiedene Größe des Fensters
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-2.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fensterprofile mit 4-, 5-, 6-Kammer
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-3.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit äußerer oder doppelseitiger
+										Laminierung - Anthrazit,
+										Goldene Eiche,
+										Dunkle Eiche, Walnuss, Mahagoni usw
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-4.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Geteilte Fenster mit einem Stulp oder Pfosten
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-5.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit Öffnungsarten: festverglast,
+										kipp- und drehbar, kippbar
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-6.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit unterschiedlicher Anzahl
+										von Gläsern
+									</div>
+								</div>
+							</div>
+
+							<div class="individuelle-bestellung__block">
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-7.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit Wärmedämmung i-Glas,
+										Argon, Krypton
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-8.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit dekoriertem Glas: Satin,
+										Delta Weiß, Diamant, Krizet, Punto usw
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-9.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit Sprossen und deren Farbe
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-10.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit verschiedenen Arten von
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-11.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit verschiedenen Beschlägen:
+										basic und einbruchhemmend WK1, WK2
+									</div>
+								</div>
+								<div class="individuelle-bestellung__line">
+									<div class="individuelle-bestellung__image">
+										<img src="img/Individuelle/Individuelle-Bestellung-12.png" style="width: 50px; height: 50px;" alt="Individuelle Bestellung">
+									</div>
+									<div class="individuelle-bestellung__description">
+										Fenster mit verschiedenen Arten von
+										Fenstergriffen und Scharnieren
+									</div>
+								</div>
+							</div>
+
+							<div class="individuelle-bestellung__block last-block">
+								<div class="last-block__content">
+									<!-- <h3 class="last-block__title">
+										
+									</h3> -->
+									<div class="last-block__description">
+										<p><strong>Wir bieten Ihnen die Herstellung von Fenstern nach Maß an</strong></p>
+										<p>
+											Unsere Spezialisten
+											helfen
+											Ihnen bei der Auswahl und Berechnung eines Fensters nach Ihren Wünschen!
+										</p>
+									</div>
+								</div>
+								<div class="mini-beschreibung__appeal appeal">
+									<div class="appeal__text">
+										<p>Benötigen Sie eine Sonderanfertigung? Kontaktiere uns!</p>
+									</div>
+									<a href="https://www.ebay.de/str/frmex?mkcid=16&mkevt=1&mkrid=707-127634-2357-0&ssspo=kxhsjqrmrmi&sssrc=3418065&ssuid=kxhsjqrmrmi&widget_ver=artemis&media=COPY" class="appeal__button">Fragen stellen</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="individuelle-bestellung__container_white">
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" onclick="changeClass('tab3')">
+								<div class="left-tab">ORNAMENTGLÄSER</div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" onclick="changeClass('tab5')">
+								<div class="right-tab">RETOUREN</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- INDIVIDUELLE BESTELLUNG (GRAUER BLOCK), Ende -->
+			</div>
+			<!-- Tab content (hide/show), end -->
+
+
+
+			<!-- Tab content (hide/show), start -->
+			<div id="tab5">
+				<!-- RETOUREN, Beginn -->
+				<div class="retouren">
+					<div class="retouren__container">
+
+						<div class="header-line">
+							<h2 class="header-line__title">RETOUREN</h2>
+						</div>
+
+						<img src="img/Retouren/help_1_1_de.png" alt="retouren" class="retouren__image">
+
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" onclick="changeClass('tab4')">
+								<div class="left-tab">INDIVIDUELLE BESTELLUNG</div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" onclick="changeClass('tab6')">
+								<div class="right-tab">DEKORFARBEN</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- RETOUREN, Ende -->
+			</div>
+			<!-- Tab content (hide/show), end -->
+
+
+
+			<!-- Tab content (hide/show), start -->
+			<div id="tab6">
+				<!-- UNSERE DEKORFARBEN FÜR PVC-PROFILE, Beginn -->
+				<div class="decorfarben">
+					<div class="decorfarben__container">
+
+						<div class="header-line">
+							<h2 class="header-line__title">DEKORFARBEN</h2>
+						</div>
+
+						<p>
+							Die Profilkaschierung kann ein wichtiger Schritt bei der Bestellung von Kunststofffenstern sein.
+							<br>Laminieren kann für verschiedene Aufgaben sein:
+						</p>
+
+						<div class="decorfarben__items">
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Anthrazit.jpg" alt="Anthrazit" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Anthrazit</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Golden-Oak.jpg" alt="Golden Oak" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Golden Oak</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Nussbaum.jpg" alt="Nussbaum" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Nussbaum</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Mahagon.jpg" alt="Mahagon" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Mahagon</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Mooreiche.jpg" alt="Mooreiche" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Mooreiche</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Basaltgrau.jpg" alt="Basaltgrau" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Basaltgrau</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Grau.jpg" alt="Grau" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Grau</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Moosgrun.jpg" alt="Moosgrun" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Moosgrun</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/Schokobraun.jpg" alt="Schokobraun" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Schokobraun</div>
+							</div>
+							<div class="decorfarben__item">
+								<div class="decorfarben__image-wrapper">
+									<img src="img/Dekorfarben/SIENA.jpg" alt="Siena" class="decorfarben__image">
+								</div>
+								<div class="decorfarben__title">Siena</div>
+							</div>
+						</div>
+
+						<p>Unsere Framex-PVC-Fenster sind nicht nur in Weiß, sondern auch in Farbe erhältlich. Auf Ihren individuellen Wunsch kann das Fenster in einer Farbe aus der folgenden Palette laminiert werden (die Farbe beeinflusst den Preis des Fensters):</p>
+
+						<div class="decorfarben__row">
+							<div class="decorfarben__windows">
+								<img src="img/Dekorfarben/Fenster-1.jpg" alt="Fenster" class="decorfarben__window">
+								<img src="img/Dekorfarben/Fenster-2.jpg" alt="Fenster" class="decorfarben__window">
+							</div>
+							<div class="decorfarben__description">
+								Beidseitige Laminierung in der gleichen Farbe. Das Fenster hat auf beiden Seiten - innen und außen - die gleiche Farbe.
+							</div>
+						</div>
+
+						<div class="decorfarben__row">
+							<div class="decorfarben__windows">
+								<img src="img/Dekorfarben/Fenster-3.png" alt="Fenster" class="decorfarben__window">
+								<img src="img/Dekorfarben/Fenster-4.png" alt="Fenster" class="decorfarben__window">
+							</div>
+							<div class="decorfarben__description">
+								Außenlaminierung. Das Fenster ist auf der Innenseite (Haus, Wohnung, Büro) weiß und auf der Außenseite farbig. Es wird verwendet, um das Erscheinungsbild des Fensters an den Designstil der Gebäudefassade anzupassen.
+							</div>
+						</div>
+
+						<div class="decorfarben__row">
+							<div class="decorfarben__windows">
+								<img src="img/Dekorfarben/Fenster-5.png" alt="Fenster" class="decorfarben__window">
+								<img src="img/Dekorfarben/Fenster-6.png" alt="Fenster" class="decorfarben__window">
+							</div>
+							<div class="decorfarben__description">
+								Interne Laminierung. Das Fenster ist auf der Innenseite (Haus, Wohnung, Büro) farbig und auf der Außenseite weiß. Praktiziert, um das Aussehen des Fensters mit dem Stil der Inneneinrichtung in Einklang zu bringen.
+							</div>
+						</div>
+
+						<div class="decorfarben__row">
+							<div class="decorfarben__windows">
+								<img src="img/Dekorfarben/Fenster-7.png" alt="Fenster" class="decorfarben__window">
+								<img src="img/Dekorfarben/Fenster-8.png" alt="Fenster" class="decorfarben__window">
+							</div>
+							<div class="decorfarben__description">
+								Beidseitige Laminierung in verschiedenen Farben. Das Fenster hat eine andere Farbe als Weiß auf der Innenseite und eine andere Farbe auf der Außenseite.
+							</div>
+						</div>
+
+						<div class="arrows-bottom">
+							<div class="arrows-bottom__button arrows-bottom__button_left" onclick="changeClass('tab5')">
+								<div class="left-tab">RETOUREN</div>
+							</div>
+							<div class="arrows-bottom__button arrows-bottom__button_right" style="opacity: 0;">
+								<div class="right-tab"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- UNSERE DEKORFARBEN FÜR PVC-PROFILE, Ende -->
+			</div>
+			<!-- Tab content (hide/show), end -->
+
+
+			<!-- bottom navigation with tabs, start -->
+			<div class="bottom-tabs">
+				<nav class="tabs">
+					<div class="tabs__container">
+						<ul class="tabs__list">
+							<li class="tabs__item tabs__item-bottom tab1 pressed-button" onclick="changeClass('tab1')">Ausrüstung</li>
+							<li class="tabs__item tabs__item-bottom tab2" onclick="changeClass('tab2')">Zeichnung </li>
+							<li class="tabs__item tabs__item-bottom tab3" onclick="changeClass('tab3')">Ornamentgläser</li>
+							<li class="tabs__item tabs__item-bottom tab4" onclick="changeClass('tab4')">Individuelle Bestellung</li>
+							<li class="tabs__item tabs__item-bottom tab5" onclick="changeClass('tab5')">Retouren</li>
+							<li class="tabs__item tabs__item-bottom tab6" onclick="changeClass('tab6')">Dekorfarben</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- bottom navigation with tabs, end -->
+
+			<script>
+				function changeClass($tabName) {
+
+					const tabsTop = document.querySelectorAll('.tabs__list_top');
+
+					if (tabsTop.length > 0) {
+						for (let index = 0; index < tabsTop.length; index++) {
+							const tab = tabsTop[index];
+							tab.classList.add("hide-buttons");
+						}
+					}
+
+					const tabsActive = document.querySelectorAll('.tab-active');
+
+					if (tabsActive.length > 0) {
+						for (let index = 0; index < tabsActive.length; index++) {
+							const tab = tabsActive[index];
+							tab.classList.remove("tab-active");
+						}
+					}
+
+					const buttonsBottom = document.getElementsByClassName('tabs__item-bottom');
+					if (buttonsBottom) {
+						if (buttonsBottom.length > 0) {
+							for (let index = 0; index < buttonsBottom.length; index++) {
+								var button = buttonsBottom[index];
+								button.classList.remove("tabs__item_active");
+							}
+						}
+					}
+
+					const buttons = document.getElementsByClassName('tabs__item_active');
+					if (buttons) {
+						if (buttons.length > 0) {
+							for (let index = 0; index < buttons.length; index++) {
+								var button = buttons[index];
+								button.classList.remove("tabs__item_active");
+							}
+						}
+					}
+
+					const activeItems = document.getElementsByClassName($tabName);
+					if (activeItems) {
+						if (activeItems.length > 0) {
+							for (let index = 0; index < activeItems.length; index++) {
+								var activeItem = activeItems[index];
+								activeItem.classList.add("tabs__item_active");
+								activeItem.classList.add("pressed-button");
+							}
+						}
+					}
+
+					const elem = document.getElementById($tabName);
+					if (elem) {
+						elem.classList.add("tab-active");
+					}
+
+					const scrollTarget = document.getElementById('scrollTarget');
+					scrollTarget.scrollIntoView({
+						behavior: "smooth"
+					});
+				}
+			</script>
+
+
+			<!-- Block mit TABS, Ende -->
+
+
+
+
+
+
+
+
+			<!-- 3 ROTE KREISE, Beginn -->
+			<div class="red-circles">
+				<div class="red-circles__container">
+					<div class="red-circles__wrapper">
+						<div class="red-circles__content">
+							<div class="red-circles__image">
+								<img src="img/Drei-Vorteile/Save-Energy.png" alt="Save Energy">
+							</div>
+							<div class="red-circles__description">
+								<p>
+									Wärmedämmungseigenschaften können bis zu 45% der Heizkosten für Wohngebäude erheblich
+									einsparen.
+								</p>
+							</div>
+						</div>
+						<div class="red-circles__content">
+							<div class="red-circles__image">
+								<img src="img/Drei-Vorteile/Unsere-PVC-Fenster.png" alt="Unsere PVC-Fenster">
+							</div>
+							<div class="red-circles__description">
+								<p>
+									Unsere Fenster bestehen aus umweltfreundlichem PVC, das zu 100 % recycelbar und damit sauber
+									und ressourceneffizient ist, worauf wir in unserer Produktion großen Wert legen.
+								</p>
+							</div>
+						</div>
+						<div class="red-circles__content">
+							<div class="red-circles__image">
+								<img src="img/Drei-Vorteile/Erfahrung-und-Tradition.png" alt="Erfahrung und Tradition">
+							</div>
+							<div class="red-circles__description">
+								<p>
+									Erfahrung und Tradition.
+									Die 26-jährige Erfahrung in der Herstellung von Qualitätsprodukten umfasst die vollständige
+									Kontrolle der Fensterproduktion von A bis Z gemäß den internationalen Normen.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 3 ROTE KREISE, Ende -->
+
+
+			<!-- UNSERE FENSTER IM EINSATZ, Beginn -->
+			<section class="einsatz">
+				<div class="einsatz__container">
+
+					<div class="header-line">
+						<h2 class="header-line__title">UNSERE FENSTER IM EINSATZ</h2>
+					</div>
+
+					<div id="slider">
+						<input checked type='radio' name='slider' id='slide1' />
+						<input type='radio' name='slider' id='slide2' />
+						<input type='radio' name='slider' id='slide3' />
+						<input type='radio' name='slider' id='slide4' />
+						<input type='radio' name='slider' id='slide5' />
+						<div id="slides">
+							<div id="container">
+								<div class="inner">
+									<div class="slide-wrapper">
+										<img src="img/Slider/212.jpg" class="einsatz__image" alt="framex windows">
+									</div>
+									<div class="slide-wrapper">
+										<img src="img/Slider/3112.jpg" class="einsatz__image" alt="framex windows">
+									</div>
+									<div class="slide-wrapper">
+										<img src="img/Slider/31224.jpg" class="einsatz__image" alt="framex windows">
+									</div>
+									<div class="slide-wrapper">
+										<img src="img/Slider/4122.jpg" class="einsatz__image" alt="framex windows">
+									</div>
+									<div class="slide-wrapper">
+										<img src="img/Slider/41221.jpg" class="einsatz__image" alt="framex windows">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="commands">
+							<label for='slide1'></label>
+							<label for='slide2'></label>
+							<label for='slide3'></label>
+							<label for='slide4'></label>
+							<label for='slide5'></label>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- UNSERE FENSTER IM EINSATZ, Ende -->
+
+
+			<!-- MANUFACTURING, Beginn -->
+			<section class="manufacturing">
+				<div class="manufacturing__container">
+
+					<div class="header-line">
+						<h2 class="header-line__title">MANUFACTURING</h2>
+					</div>
+
+					<div class="manufacturing__images">
+						<div class="manufacturing__image-wrapper">
+							<img src="img/Manufacturing/manufacturing-1.jpg" class="manufacturing__image" alt="manufacturing">
+						</div>
+						<div class="manufacturing__image-wrapper">
+							<img src="img/Manufacturing/manufacturing-2.jpg" class="manufacturing__image" alt="manufacturing">
+						</div>
+						<div class="manufacturing__image-wrapper">
+							<img src="img/Manufacturing/manufacturing-3.jpg" class="manufacturing__image" alt="manufacturing">
+						</div>
+						<div class="manufacturing__image-wrapper">
+							<img src="img/Manufacturing/manufacturing-4.jpg" class="manufacturing__image" alt="manufacturing">
+						</div>
+					</div>
+
+					<div class="manufacturing__wrapper">
+						<div class="manufacturing__video">
+							<video controls="controls" preload="auto" poster="img/Manufacturing/videoposter.jpg">
+								<source type="video/mp4" src="video/videoplay.mp4">
+								<source type="video/webm" src="video/videoplay.webm">
+							</video>
+						</div>
+						<div class="manufacturing__description">
+
+							<div class="manufacturing__text">
+								<h3><strong>Framex</strong></h3>
+								<p>Qualitätsorientierung, Partner und Produktinnovation</p>
+
+								<p>
+									Seit 25 Jahren analysieren wir die weltweit besten Praktiken, Fertigungsressourcen und
+									technischen Entwicklungen und wenden sie an, um Profilsysteme herzustellen, die
+									energieeffiziente, wartungsfreie und hochsichere Fenster und Türen ermöglichen.
+								</p>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- MANUFACTURING, Ende -->
+
+
+
+
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__wrapper">
+					<div class="footer__versand">
+						<h3 class="footer__title">Versand</h3>
+						<p class="footer__description">Um Ihnen eine sichere Zahlung und eine Vielzahl von Zahlungsmethoden zu ermöglichen, verwenden wir eBay, PayPal und die Zahlungsabwicklung per Banküberweisung.</p>
+						<div class="footer__images footer__images_4-items">
+							<div class="footer__image">
+								<img src="img/logos/TNT.png" alt="TNT">
+							</div>
+							<div class="footer__image">
+								<img src="img/logos/Fedex.png" alt="FedEx">
+							</div>
+							<div class="footer__image">
+								<img src="img/logos/GLS.png" alt="GLS">
+							</div>
+							<div class="footer__image">
+								<img src="img/logos/Raben.png" alt="Raben">
+							</div>
+						</div>
+					</div>
+					<div class="footer__zahlarten">
+						<h3 class="footer__title">Zahlarten</h3>
+						<p class="footer__description">Je nach Bestellung ist unser Versandpartner TNT, Fedex, GLS, Raben</p>
+						<div class="footer__images">
+							<div class="footer__image">
+								<img src="img/logos/PayPal.png" alt="Pay Pal">
+							</div>
+							<div class="footer__image">
+								<img src="img/logos/Vorkasse.png" alt="Vorkasse">
+							</div>
+							<div class="footer__image">
+								<img src="img/logos/VISA-MasterCard.png" alt="Visa MasterCard">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/app.min.js?_v=20220727052040"></script>
+</body>
+
+</html>
